@@ -12,64 +12,63 @@ using System.Text;
 
 namespace lab15zadacha
 {
-	class Program
-	{
-		public static void Main(string[] args)
-		{
-		}
-	}
-
-	interface ISeries
-	{
-		void setStart(int x);
-		int getNext();
-		void reset();
-	}
-
-	class ArithProgression : ISeries
-	{
-		int x=0;
-		int diff=5;
-		int nextNum;
-		public void setStart(int x) // устанавливает начальное значение
-		{
-			x = Convert.ToInt32(Console.ReadLine());
-			Console.ReadKey();
-		}
-
-		public int getNext() //возвращает следующее число ряда
-		{
-			int nextNum = x + diff;
-			return nextNum;
-		}
-		
-		public void reset() //выполняет сброс к начальному значению
-		{
-			int firstNum = nextNum - diff;
-		}
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+        }
     }
 
-	public class GeomProgression : ISeries
-	{
-		int x = 0;
-		int diff = 5;
-		int nextNum;
-		
-		public void setStart(int x) // устанавливает начальное значение
-		{
-			x = Convert.ToInt32(Console.ReadLine());
-			Console.ReadKey();
-		}
+    interface ISeries
+    {
+        void setStart(int x);
+        int getNext();
+        void reset();
+    }
 
-		public int getNext() //возвращает следующее число ряда
-		{
-			int nextNum = x * diff;
-			return nextNum;
-		}
-		
-		public void reset() //выполняет сброс к начальному значению
-		{
-			int firstNum = nextNum / diff;
-		}
-	}
+    class ArithProgression : ISeries
+    {
+        int x = 0;
+        int diff = 5;
+        int nextNum;
+        public void setStart(int x) // устанавливает начальное значение
+        {
+            x = Convert.ToInt32(Console.ReadLine());
+            Console.ReadKey();
+        }
+
+        public int getNext() //возвращает следующее число ряда
+        {
+            int nextNum = x + diff;
+            return nextNum;
+        }
+
+        public void reset() //выполняет сброс к начальному значению
+        {
+            int firstNum = nextNum - diff;
+        }
+    }
+
+    public class GeomProgression : ISeries
+    {
+        int x = 0;
+        int diff = 5;
+        int nextNum;
+
+        public void setStart(int x) // устанавливает начальное значение
+        {
+            x = Convert.ToInt32(Console.ReadLine());
+            Console.ReadKey();
+        }
+
+        public int getNext() //возвращает следующее число ряда
+        {
+            int nextNum = x * diff;
+            return nextNum;
+        }
+        public void reset() //выполняет сброс к начальному значению
+        {
+            int firstNum = nextNum / diff;
+        }
+    }
 }
