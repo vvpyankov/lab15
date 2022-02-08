@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 /*Разработать интерфейс ISeries генерации ряда чисел. Интерфейс содержит следующие элементы:
 метод void setStart(int x) - устанавливает начальное значение
@@ -16,6 +17,32 @@ namespace lab15zadacha
     {
         public static void Main(string[] args)
         {
+            ArithProgression arith = new ArithProgression();
+            arith.setStart(5);
+            arith.setDiff(8);
+            Console.WriteLine(arith.getNext());
+            Console.WriteLine(arith.getNext());
+            Console.WriteLine(arith.getNext());
+            Console.WriteLine(arith.getNext());
+            Console.WriteLine(arith.getNext());
+            Console.WriteLine(arith.getNext());
+            arith.reset();
+            Console.WriteLine(arith.getNext());
+            Console.ReadKey();
+
+            GeomProgression geom = new GeomProgression();
+            geom.setStart(5);
+            geom.setDiff(6);
+            Console.WriteLine(geom.getNext());
+            Console.WriteLine(geom.getNext());
+            Console.WriteLine(geom.getNext());
+            Console.WriteLine(geom.getNext());
+            Console.WriteLine(geom.getNext());
+            Console.WriteLine(geom.getNext());
+            geom.reset();
+            Console.WriteLine(geom.getNext());
+            Console.ReadKey();
+
         }
     }
 
@@ -28,47 +55,55 @@ namespace lab15zadacha
 
     class ArithProgression : ISeries
     {
-        int x = 0;
-        int diff = 5;
+        int diff;
+        int firstNum;
         int nextNum;
+
         public void setStart(int x) // устанавливает начальное значение
         {
-            x = Convert.ToInt32(Console.ReadLine());
-            Console.ReadKey();
+            firstNum = x;
+            nextNum = firstNum;
         }
 
         public int getNext() //возвращает следующее число ряда
         {
-            int nextNum = x + diff;
+            nextNum += diff;
             return nextNum;
         }
 
         public void reset() //выполняет сброс к начальному значению
         {
-            int firstNum = nextNum - diff;
+            nextNum = firstNum;
+        }
+        public void setDiff(int d)
+        {
+            diff = d;
         }
     }
 
     public class GeomProgression : ISeries
     {
-        int x = 0;
-        int diff = 5;
+        int diff;
+        int firstNum;
         int nextNum;
-
-        public void setStart(int x) // устанавливает начальное значение
-        {
-            x = Convert.ToInt32(Console.ReadLine());
-            Console.ReadKey();
-        }
 
         public int getNext() //возвращает следующее число ряда
         {
-            int nextNum = x * diff;
+            nextNum *= diff;
             return nextNum;
         }
         public void reset() //выполняет сброс к начальному значению
         {
-            int firstNum = nextNum / diff;
+            nextNum = firstNum;
+        }
+        public void setStart(int x) // устанавливает начальное значение
+        {
+            firstNum = x;
+            nextNum = firstNum;
+        }
+        public void setDiff(int d)
+        {
+            diff = d;
         }
     }
 }
